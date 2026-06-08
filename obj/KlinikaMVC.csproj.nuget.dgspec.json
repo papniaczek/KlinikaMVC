@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj": {}
+    "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj": {}
   },
   "projects": {
-    "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj": {
+    "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj",
         "projectName": "KlinikaMVC",
-        "projectPath": "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj",
-        "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
-        "outputPath": "D:\\Repos\\Dotnet\\KlinikaMVC\\obj\\",
+        "projectPath": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj",
+        "packagesPath": "C:\\Users\\Kacper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kacpe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kacper\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -45,12 +46,17 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "Bogus": {
+              "target": "Package",
+              "version": "[2.1.4, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[10.0.6, )"
@@ -106,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

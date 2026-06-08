@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "Azure.Core/1.47.1": {
@@ -35,6 +35,19 @@
         "runtime": {
           "lib/net8.0/Azure.Identity.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "Bogus/2.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Bogus.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/Bogus.dll": {
+            "related": ".XML"
           }
         }
       },
@@ -2638,6 +2651,19 @@
         "lib/net8.0/Azure.Identity.xml",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Bogus/2.1.4": {
+      "sha512": "hy7obx2zGCkbSAhffhFHYXgFQbw06TfXVdXo6Tkav2faglTwapLvu2PR/oZnBnxxEfaMXgr1MVotWuoRav2XZw==",
+      "type": "package",
+      "path": "bogus/2.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bogus.2.1.4.nupkg.sha512",
+        "bogus.nuspec",
+        "lib/net40/Bogus.XML",
+        "lib/net40/Bogus.dll"
       ]
     },
     "Humanizer/2.14.1": {
@@ -6712,6 +6738,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Bogus >= 2.1.4",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 10.0.6",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 10.0.6",
       "Microsoft.AspNetCore.Identity.UI >= 10.0.6",
@@ -6723,23 +6750,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kacpe\\.nuget\\packages\\": {},
+    "C:\\Users\\Kacper\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj",
+      "projectUniqueName": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj",
       "projectName": "KlinikaMVC",
-      "projectPath": "D:\\Repos\\Dotnet\\KlinikaMVC\\KlinikaMVC.csproj",
-      "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
-      "outputPath": "D:\\Repos\\Dotnet\\KlinikaMVC\\obj\\",
+      "projectPath": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\KlinikaMVC.csproj",
+      "packagesPath": "C:\\Users\\Kacper\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kacper\\Documents\\VS CODE PROJECTS\\SBD\\KlinikaMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kacpe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kacper\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6753,6 +6780,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -6767,12 +6795,17 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
+          "Bogus": {
+            "target": "Package",
+            "version": "[2.1.4, )"
+          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[10.0.6, )"
@@ -6828,7 +6861,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -7263,6 +7296,16 @@
       "warningLevel": 1,
       "message": "Package 'NuGet.Protocol' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
       "libraryId": "NuGet.Protocol",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Bogus 2.1.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net10.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Bogus",
       "targetGraphs": [
         "net10.0"
       ]
