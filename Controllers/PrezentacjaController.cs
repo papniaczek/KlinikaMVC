@@ -74,11 +74,15 @@ namespace KlinikaMVC.Controllers
 
         public IActionResult Dluznicy()
         {
+            _context.Database.SetCommandTimeout(300);
+
+            // Odpalamy poprawioną procedurę
             var raport = _context.Pacjenci
                 .FromSqlRaw("EXEC sp_RaportDlugow")
                 .ToList();
 
-            return Json(raport);
+            // Zmieniamy z Json(raport) na View(raport) -> to stworzy nam prawdziwą stronę www
+            return View(raport);
         }
     }
 }

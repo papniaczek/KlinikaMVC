@@ -111,6 +111,9 @@ namespace KlinikaMVC.Data
                 .WithMany(p => p.UdzieloneOdpowiedzi)
                 .HasForeignKey(op => op.PodejscieId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Wizyta>()
+                .ToTable(tb => tb.HasTrigger("trg_BlokadaWizytyWPrzeszlosci"));
         }
     }
 }

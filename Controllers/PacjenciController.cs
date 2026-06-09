@@ -59,6 +59,12 @@ namespace KlinikaMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,IdentityUserId,Imie,Nazwisko,Dlug")] Pacjent pacjent)
         {
+            ModelState.Remove("IdentityUser");
+            ModelState.Remove("Wizyty");
+            ModelState.Remove("PacjenciGrupy");
+            ModelState.Remove("PrzypisaniaUzaleznien");
+            ModelState.Remove("UdostepnieniaZadan");
+            
             if (ModelState.IsValid)
             {
                 _context.Add(pacjent);
@@ -98,6 +104,12 @@ namespace KlinikaMVC.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("IdentityUser");
+            ModelState.Remove("Wizyty");
+            ModelState.Remove("PacjenciGrupy");
+            ModelState.Remove("PrzypisaniaUzaleznien");
+            ModelState.Remove("UdostepnieniaZadan");
+            
             if (ModelState.IsValid)
             {
                 try

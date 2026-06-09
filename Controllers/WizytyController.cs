@@ -50,28 +50,48 @@ namespace KlinikaMVC.Controllers
         // GET: Wizyty/Create
         public IActionResult Create()
         {
-            ViewData["PacjentId"] = new SelectList(_context.Pacjenci, "Id", "Id");
-            ViewData["StatusId"] = new SelectList(_context.StatusyWizyt, "Id", "Id");
-            ViewData["TerapeutaId"] = new SelectList(_context.Terapeuci, "Id", "Id");
+            // Ładujemy słowniki. Zauważ, że podajemy "Nazwisko", "Imie" i "Nazwa" 
+            // żeby w rozwijanym menu był tekst, a nie samo ID!
+            ViewData["PacjentId"] = new SelectList(_context.Pacjenci, "Id", "Nazwisko");
+            ViewData["TerapeutaId"] = new SelectList(_context.Terapeuci, "Id", "Imie");
+            ViewData["StatusId"] = new SelectList(_context.StatusyWizyt, "Id", "Nazwa");
+    
             return View();
         }
 
-        // POST: Wizyty/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+// POST: Wizyty/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DataWizyty,PacjentId,TerapeutaId,StatusId")] Wizyta wizyta)
         {
+            // CZYŚCIMY WALIDACJĘ (żeby formularz nie wariował, że brakuje relacji)
+            ModelState.Remove("Pacjent");
+            ModelState.Remove("Terapeuta");
+            ModelState.Remove("Status");
+            ModelState.Remove("Notatka");
+
             if (ModelState.IsValid)
             {
-                _context.Add(wizyta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(wizyta);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    // MAGIA: PRZECHWYTUJEMY BŁĄD Z TRIGGERA!
+                    // Zamiast sypać aplikację, wyświetlamy komunikat nad formularzem
+                    var errorMessage = ex.InnerException?.Message ?? ex.Message;
+                    ModelState.AddModelError(string.Empty, $"Błąd bazy danych: {errorMessage}");
+                }
             }
-            ViewData["PacjentId"] = new SelectList(_context.Pacjenci, "Id", "Id", wizyta.PacjentId);
-            ViewData["StatusId"] = new SelectList(_context.StatusyWizyt, "Id", "Id", wizyta.StatusId);
-            ViewData["TerapeutaId"] = new SelectList(_context.Terapeuci, "Id", "Id", wizyta.TerapeutaId);
+    
+            // Jeśli coś poszło nie tak (albo trigger nas odbił), musimy znowu załadować listy!
+            ViewData["PacjentId"] = new SelectList(_context.Pacjenci, "Id", "Nazwisko", wizyta.PacjentId);
+            ViewData["TerapeutaId"] = new SelectList(_context.Terapeuci, "Id", "Imie", wizyta.TerapeutaId);
+            ViewData["StatusId"] = new SelectList(_context.StatusyWizyt, "Id", "Nazwa", wizyta.StatusId);
+    
             return View(wizyta);
         }
 
@@ -105,6 +125,11 @@ namespace KlinikaMVC.Controllers
             {
                 return NotFound();
             }
+            
+            ModelState.Remove("Pacjent");
+            ModelState.Remove("Terapeuta");
+            ModelState.Remove("Status");
+            ModelState.Remove("Notatka");
 
             if (ModelState.IsValid)
             {
